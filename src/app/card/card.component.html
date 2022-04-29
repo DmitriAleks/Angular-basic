@@ -1,15 +1,53 @@
 <div class="card">
-  <h2>{{title}}</h2>
-  <p>{{text}}</p>
+  <h2 [ngStyle]="{
+  color: title.length < 5 ? 'blue': 'green',
+  fontWeight: title.length < 7 ? 'normal': 'bold'
+  }" >{{card.title}}</h2>
+  <p class="text" [ngClass]="{
+blue: textColor === 'blue',
+red: textColor === 'red',
+green: textColor === 'green'
+
+  }" >{{index}}{{card.text}}</p>
+  <p class="text" 
+  [class.blue]="textColor === 'blue'"
+  [class.red]="textColor === 'red'"
+  [class.green]="textColor === 'green'"
+  >Илья привет</p>
   <strong>Number: {{number}}</strong>
   <em>{{array}}</em>
   <span>{{obj | json}}</span>
   <p>{{getHelloWord()}}</p>
   <button (click)="getInfo()">get Info</button>
- // 01-00
+ 
   <div class="card-img">
     <img [src]="imgUrl" alt="Panda">
     <button [disabled]="disabled">dis</button>
   </div>
+
+<div>
+ <button (click)="changeTitle()" >Change</button>
+ <button (click)="card.title = 'inline title'" >Change2</button>
+<div>
+  <input type="text" #myInput (input)="inputHandler(myInput.value)" [value]="title" >
+</div>
+</div>
+
+<div>
+  <input type="text" [(ngModel)]="card.title" (ngModelChange)="changeHandler()" >
+</div>
+
+<div>
+<h3>Управление стилями</h3>
+<button (click)="textColor = 'blue'">Blue</button>
+<button (click)="textColor = 'red'">Red</button>
+<button (click)="textColor = 'green'">Green</button>
+</div> 
+
+<div>
+  <h1>Date</h1>
+  <strong>{{ cardDate | date:'dd MMMM yyyy HH:mm:ss':'null':'ru'}}</strong>
+</div>
+
 </div>
 

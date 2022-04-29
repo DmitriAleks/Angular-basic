@@ -1,5 +1,16 @@
 <div class="container">
 <h1>Hello angular</h1>
-  <app-card>
+<hr>
+<button (click)="togleCards()" >toggle cards</button>
+<div *ngIf="togle; else noCards">
+  <app-card
+   *ngFor="let card of cardss; let idx = index"
+   [card]="card"
+   [index]="idx + 1"
+   >
   </app-card>
+</div>
+
+<ng-template #noCards><p>Cards if not find</p></ng-template>
+
 </div>
