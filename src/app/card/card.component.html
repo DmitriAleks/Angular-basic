@@ -1,0 +1,15 @@
+<div class="card">
+  <h2>{{title}}</h2>
+  <p>{{text}}</p>
+  <strong>Number: {{number}}</strong>
+  <em>{{array}}</em>
+  <span>{{obj | json}}</span>
+  <p>{{getHelloWord()}}</p>
+  <button (click)="getInfo()">get Info</button>
+ // 01-00
+  <div class="card-img">
+    <img [src]="imgUrl" alt="Panda">
+    <button [disabled]="disabled">dis</button>
+  </div>
+</div>
+
